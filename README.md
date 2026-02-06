@@ -5,23 +5,34 @@ This is a semver representation of me starting at version 3 for some reason
 
 > This is a WIP
 
-### Major (X.0.0) - New Ocen Discovery
+### Major (X.0.0) - New Sea Discovery
 
-A major version bump represents entering a completely new technology universe. This happens when you gain enough knowledge to actually **use** a new technology in real projects, not just read about it.
+A major version bump represents entering a completely new universe that fundamentally expands what you can do or how you work. This can be a new **technology stack**, a new **domain/discipline**, or a new **level of impact and responsibility**.
 
-**Key Criteria:**
+**Key Criteria (any ONE of these qualifies):**
+
+**Technology Stack:**
 - You can build functional applications with this technology
 - You understand the core concepts and can troubleshoot common issues
-- You're comfortable enough to use it in personal or small projects
 - You've moved beyond "hello world" into practical implementation
+
+**Domain/Discipline:**
+- You've mastered a new area that fundamentally changes how you work
+- You can apply this discipline professionally and independently
+- It opens entirely new problem-solving capabilities
+
+**Impact/Responsibility:**
+- You've achieved a new level of influence or leadership
+- You can now shape technical direction, mentor others, or lead initiatives
+- Your scope of impact has significantly expanded
 
 **One Piece Example:** *"I've discovered a new sea with its own unique islands and challenges!"*
 
 **Real Examples:**
-- Learning React to the point where you can build a complete SPA
-- Mastering Python enough to create data analysis scripts
-- Understanding Docker well enough to containerize applications
-- Learning a new programming paradigm (OOP, Functional, etc.)
+- **Tech Stack**: Learning React to build complete SPAs, mastering Python for data analysis
+- **Domain**: Becoming proficient in testing as a craft, security practices, DevOps workflows
+- **Impact**: Moving from IC to leading projects and mentoring, adopting AI-assisted development paradigm
+- **Paradigm Shift**: Learning functional programming after OOP, switching to AI-powered workflows
 
 ### Minor (0.X.0) - New Island Discovery
 
