@@ -5,7 +5,7 @@ This is a semver representation of me starting at version 3 for some reason
 
 > This is a WIP
 
-### Major (X.0.0) - New Universe Discovery
+### Major (X.0.0) - New Ocen Discovery
 
 A major version bump represents entering a completely new technology universe. This happens when you gain enough knowledge to actually **use** a new technology in real projects, not just read about it.
 
