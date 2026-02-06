@@ -74,6 +74,25 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
 
 ---
 
+### 🛠️ Symlinks: Access files from multiple locations without duplication
+- **Problem**: Need to access the same file from multiple locations without copying it
+- **What they are**: Pointers/shortcuts to files or folders in another location
+- **How they work**: Like a portal - the file appears to be in multiple places, but physically exists in only one
+- **Create**: `ln -s /path/to/real/file /path/to/symlink`
+- **Remove**: `rm symlink` (safe - doesn't delete the target)
+- **Real usage**:
+  - Shared learnings across repos: `ui/_alex_workbench/Learnings.md → ~/personal-repo/Learnings.md`
+  - Local package development: `node_modules/my-lib → ~/projects/my-lib`
+  - Configuration management: `~/.vimrc → ~/dotfiles/.vimrc`
+  - Version switching: `/usr/bin/python → /usr/bin/python3.11`
+- **Why they matter**: 
+  - Avoid duplication (update once, affects all)
+  - Safer (files survive repo deletion)
+  - Used heavily by npm, Docker, git, Python venv, Homebrew
+- **When NOT to use**: Across filesystems, Windows, in committed git repos (paths won't exist for others)
+
+---
+
 ## Template for future entries
 
 ### 🛠️ [Topic]: [One-line summary] [✅ Shared if in PAINT_THE_DOM]
