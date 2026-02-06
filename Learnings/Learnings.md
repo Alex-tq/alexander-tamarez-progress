@@ -87,7 +87,6 @@ input.dispatchEvent(new Event('input', { bubbles: true }));
   - Version switching: `/usr/bin/python → /usr/bin/python3.11`
 - **Why they matter**: 
   - Avoid duplication (update once, affects all)
-  - Safer (files survive repo deletion)
   - Used heavily by npm, Docker, git, Python venv, Homebrew
 - **When NOT to use**: Across filesystems, Windows, in committed git repos (paths won't exist for others)
 
