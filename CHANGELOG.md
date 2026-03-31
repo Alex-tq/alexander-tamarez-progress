@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file, following [Semantic Versioning (SemVer)](https://semver.org/) standards.
 
+## [4.0.2] - 2026-03-30
+### Patch - Hidden Treasure Discovery 🗺️
+Deep dive into build tooling and package management concepts.
+
+#### 🛠️ Build Tooling Discoveries
+- **Tree-shaking fundamentals**: Learned what tree-shaking is and why it only works with ESM (not CJS). CJS allows dynamic `require()` calls at runtime (inside conditionals, loops, functions), forcing bundlers to keep all code. ESM `import` statements must be static and top-level, enabling safe dead code elimination.
+
+#### 📦 Package Management Discoveries
+- **Package exports and compilation**: Discovered how the `exports` field in `package.json` routes consumers to the right files (ESM, CJS, types). Learned that packages shipping raw TypeScript source break this contract, forcing every consumer to configure `transformIgnorePatterns`, path aliases, and loader exceptions manually.
+
 ## [4.0.1] - 2026-02-05
 ### Patch - Hidden Treasure Discovery 🗺️
 Discovered helpful features and optimizations within Git, React, and shell tooling.

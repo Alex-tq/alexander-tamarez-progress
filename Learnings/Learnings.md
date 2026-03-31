@@ -4,6 +4,32 @@ A running log of useful things I've learned while building UI.
 
 ---
 
+## 2026-03-30
+
+### 🛠️ Build Tooling: Tree-shaking — what it is and why CJS prevents it
+- **Problem**: Wanted to understand what tree-shaking is and why it doesn't always work
+- **Solution**: Tree-shaking is how bundlers remove code you never imported. If you import only `UserProfile` from a library of 20 components, the bundler drops the other 19 from your final bundle. This only works with **ESM** (`import`/`export`). CJS (`require`) defeats it because `require()` can be called anywhere at runtime — inside an `if`, a loop, a function — so the bundler can never be certain at build time what will actually be needed, and has to keep everything. ESM `import` statements must be at the top of the file, unconditionally, so the bundler can read the file once and safely discard what's unused.
+- **Why it matters**: If a shared component library ships CJS-only, consumers can't tree-shake it — they pull in the entire library even if they use one component. Shipping ESM output is a prerequisite for bundle optimization in micro-frontends.
+- **Commands/Code**: "dynamic `require()` calls" (CJS runtime feature that defeats tree-shaking) ≠ "conditional exports" (`"import"`/`"require"`/`"types"` routing in `package.json`). They sound similar but are separate concepts.
+
+---
+
+### 📦 Package Managers: How packages expose imports and what breaks when they ship source
+- **Problem**: Wanted to understand how a published package controls what consumers can import, and why some packages require extra configuration
+- **Solution**: The `exports` field in `package.json` is a routing table — it tells each tool which file to use when someone imports a given path. A properly compiled package uses conditional exports so every tool routes itself automatically:
+  ```json
+  "./components": {
+    "import":  "./dist/esm/components/index.js",    ← webpack/Vite use this
+    "require": "./dist/cjs/components/index.js",    ← Jest/Node use this
+    "types":   "./dist/types/components/index.d.ts" ← TypeScript uses this
+  }
+  ```
+  When this is set up correctly, consumers need zero configuration — install and import. But when a package ships raw `.ts` source instead of compiled output, this chain breaks: Jest and webpack don't compile `node_modules` by default, so every consumer must manually add `transformIgnorePatterns` (Jest), `ts-loader` exceptions (webpack), and path aliases for any internal package names. This setup must be repeated for every consuming project and updated every time the library adds a new internal package.
+- **Why it matters**: Encountering `moduleNameMapper` or `transformIgnorePatterns` pointed at a `node_modules` package is a diagnostic signal — the package is shipping source instead of compiled output and pushing its build problem onto consumers.
+- **Commands/Code**: `exports` (routes consumers at build/runtime) ≠ `tsconfig paths` (helps TypeScript inside the repo at development time). Also: paths not listed in `exports` can't be imported at all — it's a security boundary.
+
+---
+
 ## 2026-02-05
 
 ### 🛠️ Git: Local-only ignore patterns with `.git/info/exclude` ✅ Shared
